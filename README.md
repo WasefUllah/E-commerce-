@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛒 My Next.js Product App
 
-## Getting Started
+A full-stack product management application built with **Next.js 13 (App Router)**, **MongoDB Atlas**, and **NextAuth.js (Google Authentication)**.  
+Users can view products, see detailed product pages, and authenticated users can add new products.
 
-First, run the development server:
+---
 
+## 🚀 Features
+- Google authentication with **NextAuth.js**
+- Protected **Add Product** page (redirects unauthenticated users to login)
+- Product listing with details page
+- MongoDB Atlas integration for storing product data
+- API routes for CRUD operations (`/api/products`)
+
+---
+
+## ⚙️ Setup & Installation
+
+### 1. Clone the repo
 ```bash
+git clone https://github.com/your-username/my-app.git
+cd my-app
+
+
+2. Install dependencies
+
+npm install
+3. Environment Variables
+
+Create a .env.local file in the root with the following:
+
+MONGODB_URI="your-mongodb-atlas-connection-uri"
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET="your-secret-key"
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+
+
+⚠️ Replace the placeholders with your actual MongoDB Atlas and Google OAuth credentials.
+
+4. Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Open http://localhost:3000
+ in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🛤️ Route Summary
+Public Routes
 
-## Learn More
+/ → Homepage
 
-To learn more about Next.js, take a look at the following resources:
+/products → Show all products
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+/products/[id] → Show product details
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Protected Routes
 
-## Deploy on Vercel
+/dashboard/addProduct → Add new product (only available to authenticated users)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+API Routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+GET /api/products → Fetch all products
+
+POST /api/products → Add a new product (authenticated users only)
+
+GET /api/products/[id] → Fetch product details by ID
+
+📦 Deployment
+
+This project is deployable on Vercel.
+Make sure to add the same environment variables (MONGODB_URI, NEXTAUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET) in the Vercel dashboard before deploying.
